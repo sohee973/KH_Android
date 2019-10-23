@@ -13,6 +13,23 @@ public class HW {
         Scanner in=new Scanner(System.in);
         System.out.println("몇 항까지 합칠까요?");
         int num=in.nextInt();
-        
+        int first=1,second=1,third=3;
+        int finalRes=first+second+third;
+
+        num-=3;
+
+        while(num-->0)
+        {
+            int tmp=first;
+            first=second;
+            second=third;
+            third=tmp+second;
+
+            finalRes+=third;
+
+            System.out.println("third = " + third);
+        }
+
+        System.out.println("Final Res = " + finalRes);
     }
 }

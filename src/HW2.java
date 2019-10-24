@@ -11,11 +11,13 @@ public class HW2 {
         series[0]=1;
         for(int i=1;i<100;i++)
         {
-            series[i]=series[i-1]*2;
+            series[i]=series[i-1]*2; // <<1;
         }
         System.out.println("8번째 : " + series[7]);
         System.out.println("10번째 : " +series[9]);
         System.out.println("12번째 : " +series[11]);
         System.out.println("16번째 : " +series[15]);
+
+        System.out.println("전부 더한 값 : " + (series[7]+ series[9]+ series[11]+ series[15]));
     }
 }

@@ -10,7 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    LinearLayout innerLL1;
+    LinearLayout innerLL2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         /*android:background="#0000ff"와 동의어 */
         base.setBackgroundColor(Color.rgb(0,0,255));
         //만든 내용을 실제 화면에 출력하는 부분
+
+
+        innerLL1=new LinearLayout(getApplicationContext());
+        innerLL1.setLayoutParmas(
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT,weight:1f);
+        )
+
+
         setContentView(base,params);
 
         Button btn=new Button(this);
@@ -39,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         //우리가 만든 버튼 객체를 실제 화면에 출력함
         base.addView(btn);
 
+        btn.setOnClickListener(new View.OnClickliste);
         btn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Toast.makeText(getApplicationContext(),"색상이 바뀌었습니다.", Toast.LENGTH_LONG).show();

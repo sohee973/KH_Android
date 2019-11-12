@@ -22,19 +22,31 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
-    TextView tv1;
+    TextView tv1,tv2;
     CheckBox chkAgree1,chkAgree2,chkAgree3;
     Button btnOK;
     ImageView ImgLang;
+    Boolean rand=false,seq=false;
 
+    int drawArr[]={R.drawable.num1,R.drawable.num2,R.drawable.num3,R.drawable.num4,R.drawable.num5,R.drawable.num6,
+            R.drawable.num7,R.drawable.num8,R.drawable.num9,R.drawable.num10};
+
+    int cnt=0;
+
+    Random ran=new Random();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("Random Image Print");
 
-        tv1=(TextView)findViewById(R.id.text);
+        tv1=(TextView)findViewById(R.id.text1);
+        tv2=(TextView)findViewById(R.id.text2);
         chkAgree1=(CheckBox)findViewById(R.id.chk1);
         chkAgree2=(CheckBox)findViewById(R.id.chk2);
         chkAgree3=(CheckBox)findViewById(R.id.chk3);
@@ -45,15 +57,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(chkAgree1.isChecked()==true){
-                    tv1.setVisibility(View.VISIBLE);
-                    chkAgree2.setVisibility(View.VISIBLE);
-                    chkAgree3.setVisibility(View.VISIBLE);
+                    tv2.setVisibility(View.VISIBLE);
+                    btnOK.setVisibility(View.VISIBLE);
                     ImgLang.setVisibility(View.VISIBLE);
                 }
                 else{
-                    tv1.setVisibility(View.INVISIBLE);
-                    chkAgree2.setVisibility(View.INVISIBLE);
-                    chkAgree3.setVisibility(View.INVISIBLE);
+                    tv2.setVisibility(View.INVISIBLE);
+                    btnOK.setVisibility(View.INVISIBLE);
                     ImgLang.setVisibility(View.INVISIBLE);
                 }
             }
@@ -63,9 +73,43 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(chkAgree2.isChecked()==true){
 
-                    ImgLang.setImageResource(R.drawable.i);
+                    rand=true;
+                }
+                else{
+                    rand=false;
                 }
             }
+        });
+        chkAgree3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                                 @Override
+                                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                     if(chkAgree3.isChecked()==true){
+                                                         seq=true;
+                                                     }
+                                                     else{
+                                                         seq=false;
+                                                     }
+                                                 }
+                                             }
+        );
+        btnOK.setOnClickListener(new View.OnClickListener(){
+           public void onClick(View v) {
+               if(rand==true&&seq==true){
+                   tv2.setText("랜덤과 순차를 동시 선택했습니다.");
+               }
+               else if(rand==true){
+                   ImgLang.setImageResource(drawArr[ran.nextInt(10)]);
+               }
+               else if(seq==true){
+                   ImgLang.setImageResource(drawArr[cnt++]);
+                   if(cnt==10){
+                       cnt=0;
+                   }
+               }
+               else{
+                   tv2.setText("올바른 설정이 필요합니다.");
+               }
+           }
         });
     }
 }

@@ -6,33 +6,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="10dp"
+    android:orientation="vertical">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Random Image Print"
-        android:id="@+id/text"
+        android:text="Select Picture !!"
+        android:id="@+id/text1"
   />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이 부분을 주목하세요."
+        android:id="@+id/text2"
+        android:visibility="invisible"
+        />
 <CheckBox
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/chk1"
+    android:text="Show Time !"
     />
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/chk2"/>
+        android:id="@+id/chk2"
+        android:text="Random View !"/>
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/chk3"/>
+        android:id="@+id/chk3"
+        android:text="Sequence View ! "/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ImgLang"/>
+        android:id="@+id/ImgLang"
+        android:visibility="invisible"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn"/>
+        android:id="@+id/btn"
+        android:visibility="invisible"
+        android:text="Select Complete ! "/>
 </LinearLayout>
